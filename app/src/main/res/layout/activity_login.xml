@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".loginActivity"
     android:background="@color/black">
+
     <ImageView
         android:id="@+id/main_logo"
         android:layout_width="402dp"
@@ -35,8 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="LogIn"
-            android:background="@drawable/loground"/>
+            android:background="@drawable/loground"
+            android:text="LogIn" />
 
         <Button
             android:id="@+id/button4"
@@ -45,6 +46,28 @@
             android:layout_weight="1"
             android:text="SignIn"
             android:background="@drawable/loground"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="344dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="2dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="98dp" >
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/frgm"
+            android:name="com.example.bhaitalks.logfrag"
+            android:layout_width="430dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:layout="@layout/fragment_logfrag" />
     </LinearLayout>
 
 </RelativeLayout>
