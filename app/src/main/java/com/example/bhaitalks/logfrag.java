@@ -21,6 +21,7 @@ public class logfrag extends Fragment {
     public logfrag() {
         // Required empty public constructor
     }
+//    hello
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
