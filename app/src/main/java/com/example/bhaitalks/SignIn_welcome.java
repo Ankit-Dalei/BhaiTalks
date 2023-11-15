@@ -26,12 +26,16 @@ public class SignIn_welcome extends AppCompatActivity {
             @Override
             public void run(){
                 boolean isInserted= myDb.insertData( uname, Email, phon, Pass);
-                if(isInserted==true)
+                if(isInserted==true){
                     Toast.makeText(SignIn_welcome.this, "Data Inserted Successfully.", Toast.LENGTH_LONG).show();
+                    Intent i=new Intent(SignIn_welcome.this,loginActivity.class);
+                    startActivity(i);
+                    finish();
+                }
                 else
                     Toast.makeText(SignIn_welcome.this,"Failed Insertion.",Toast.LENGTH_LONG).show();
             }
-        },3000);
+        },5000);
 
     }
 }

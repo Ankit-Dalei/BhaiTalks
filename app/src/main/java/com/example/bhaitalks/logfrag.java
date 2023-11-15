@@ -38,10 +38,13 @@ public class logfrag extends Fragment {
         });
         button=view.findViewById(R.id.button5);
         ut=view.findViewById(R.id.editTextText);
+        pt=view.findViewById(R.id.editTextText4);
         button.setOnClickListener((v)->{
                 String uid=ut.getText().toString().trim();
+                String pass=pt.getText().toString().trim();
                 Intent i=new Intent(getActivity(), WelcomeActivity.class);
                 i.putExtra("uid",uid);
+                i.putExtra("pass",pass);
                 startActivity(i);
         });
         return view;

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zegocloud.uikit.prebuilt.call.config.ZegoNotificationConfig;
 import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationConfig;
@@ -14,21 +15,34 @@ import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationS
 
 public class WelcomeActivity extends AppCompatActivity {
     TextView tdt;
+    DBhelper myDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         tdt=(TextView) findViewById(R.id.textView6);
+        myDb=new DBhelper(this);
         String uid=getIntent().getStringExtra("uid");
+        String pass=getIntent().getStringExtra("pass");
         tdt.setText("Hello"+uid);
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run(){
-                Intent i=new Intent(WelcomeActivity.this,HomeActivity.class);
-                i.putExtra("uid",uid);
-                Startservice(uid);
-                startActivity(i);
-                finish();
+                boolean isInserted= myDb.checkuser( uid, pass);
+                if(isInserted==true){
+                    Toast.makeText(WelcomeActivity.this, "Login Successfully.", Toast.LENGTH_LONG).show();
+                    Intent i=new Intent(WelcomeActivity.this,HomeActivity.class);
+                    i.putExtra("uid",uid);
+                    Startservice(uid);
+                    startActivity(i);
+                    finish();
+                }
+                else{
+                    Toast.makeText(WelcomeActivity.this,"Failed Login.",Toast.LENGTH_LONG).show();
+                    Intent i=new Intent(WelcomeActivity.this,loginActivity.class);
+                    startActivity(i);
+                    finish();
+                }
             }
         },3000);
     }

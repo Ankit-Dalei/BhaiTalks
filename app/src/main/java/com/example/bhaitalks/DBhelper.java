@@ -2,6 +2,7 @@ package com.example.bhaitalks;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -17,7 +18,7 @@ public class DBhelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("create table users(ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT,EMAIL TEXT,PHONE INTEGER,PASSWORD TEXT)");
+        DB.execSQL("create table users(ID INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,email TEXT,phone INTEGER,password TEXT)");
     }
 
     @Override
@@ -30,14 +31,25 @@ public class DBhelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase DB=this.getReadableDatabase();
         ContentValues contentValues= new ContentValues();
-        contentValues.put(name, name);
-        contentValues.put(email, email);
-        contentValues.put(phone, phone);
-        contentValues.put(password, password);
+        contentValues.put("name", name);
+        contentValues.put("email", email);
+        contentValues.put("phone", phone);
+        contentValues.put("password", password);
         long result=DB.insert("users",null ,contentValues);
         if(result==-1)
             return false;
         else
             return true;
+    }
+
+    public boolean checkuser(String name,String password)
+    {
+        SQLiteDatabase DB=this.getReadableDatabase();
+        ContentValues contentValues= new ContentValues();
+        Cursor cursor= DB.rawQuery("Select * from users where name= ? and password=?",new String[] {name,password});
+        if(cursor.getCount()>0)
+            return true;
+        else
+            return false;
     }
 }
