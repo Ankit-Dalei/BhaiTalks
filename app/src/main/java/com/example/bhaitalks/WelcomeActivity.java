@@ -49,8 +49,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
     void Startservice(String uid){
         Application application =getApplication(); // Android's application context
-        long appID = 1559378344;   // yourAppID
-        String appSign ="d9848db3356794c6b39c4526df4af8b6c79083e807db4e8d2ec16c52ddf54e3e";  // yourAppSign
+        long appID = 1275322135;   // yourAppID
+        String appSign ="9fda5ed85746f4b02f1ddef88dbe638dacc0b23cd0383d451e1ab20884ddefd4";  // yourAppSign
         String userID =uid; // yourUserID, userID should only contain numbers, English characters, and '_'.
         String userName =uid;   // yourUserName
 
