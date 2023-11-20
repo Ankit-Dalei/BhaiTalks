@@ -101,7 +101,7 @@
         android:layout_height="45dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/loground"
-        android:text="Button"
+        android:text="SignUp"
         android:textColor="#FBF8F8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextText6"
